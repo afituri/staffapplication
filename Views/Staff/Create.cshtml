@@ -1,0 +1,72 @@
+@model StaffInformationApp.Models.Staff
+
+@{
+  ViewData["Title"] = "Create Staff";
+}
+
+<h1>Create Staff</h1>
+
+<h4>Staff</h4>
+<hr />
+<div class="row">
+  <div class="col-md-4">
+    <form asp-action="Create" method="post">
+      <div class="form-group">
+        <label asp-for="IndexNumber" class="control-label"></label>
+        <input asp-for="IndexNumber" class="form-control" />
+        <span asp-validation-for="IndexNumber" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="FullNames" class="control-label"></label>
+        <input asp-for="FullNames" class="form-control" />
+        <span asp-validation-for="FullNames" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="CurrentLocation" class="control-label"></label>
+        <input asp-for="CurrentLocation" class="form-control" />
+        <span asp-validation-for="CurrentLocation" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="HighestLevelOfEducationId" class="control-label"></label>
+        <select asp-for="HighestLevelOfEducationId" class="form-control"
+          asp-items="ViewBag.HighestLevelOfEducationId"></select>
+        <span asp-validation-for="HighestLevelOfEducationId" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="DutyStationId" class="control-label"></label>
+        <select asp-for="DutyStationId" class="form-control" asp-items="ViewBag.DutyStationId"></select>
+        <span asp-validation-for="DutyStationId" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="AvailabilityForRemoteWork" class="control-label"></label>
+        <div>
+          <label>
+            <input asp-for="AvailabilityForRemoteWork" type="radio" value="true" /> Yes
+          </label>
+          <label>
+            <input asp-for="AvailabilityForRemoteWork" type="radio" value="false" /> No
+          </label>
+        </div>
+        <span asp-validation-for="AvailabilityForRemoteWork" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<div>
+  <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+  @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+  }
+}

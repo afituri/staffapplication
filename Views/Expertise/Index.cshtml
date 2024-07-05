@@ -1,0 +1,44 @@
+@model IEnumerable<StaffInformationApp.Models.StaffSoftwareExpertise>
+
+@{
+  ViewData["Title"] = "Software Expertise";
+  int staffId = (int)ViewData["StaffId"];
+}
+
+<h1>Software Expertise</h1>
+
+<p>
+  <a asp-action="Create" asp-route-staffId="@staffId" class="btn btn-primary">Add New Expertise</a>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.First().SoftwareExpertise.SoftwareName)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.First().ExpertiseLevel)
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.SoftwareExpertise.SoftwareName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.ExpertiseLevel)
+        </td>
+
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div>
+  <a asp-action="Index" asp-controller="Staff" class="btn btn-secondary">Back to Staff List</a>
+</div>

@@ -1,0 +1,47 @@
+@model StaffInformationApp.Models.Project
+
+@{
+  ViewData["Title"] = "Create Project";
+  int staffId = (int)ViewData["StaffId"];
+
+}
+
+<h1>Create Project</h1>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+  <div class="col-md-4">
+    <form asp-action="Create">
+      <div class="form-group">
+        <label asp-for="ProjectTitleAndLocation" class="control-label"></label>
+        <input asp-for="ProjectTitleAndLocation" class="form-control" />
+        <span asp-validation-for="ProjectTitleAndLocation" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="LevelOfResponsibility" class="control-label"></label>
+        <input asp-for="LevelOfResponsibility" class="form-control" />
+        <span asp-validation-for="LevelOfResponsibility" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="BriefDescriptionOfRole" class="control-label"></label>
+        <textarea asp-for="BriefDescriptionOfRole" class="form-control"></textarea>
+        <span asp-validation-for="BriefDescriptionOfRole" class="text-danger"></span>
+      </div>
+      <input type="hidden" asp-for="StaffId" value="@ViewData["StaffId"]" />
+      <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<div>
+  <a asp-action="Index" asp-route-staffId="@staffId" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+  @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+  }
+}

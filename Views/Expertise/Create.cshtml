@@ -1,0 +1,48 @@
+@model StaffInformationApp.Models.StaffSoftwareExpertise
+
+@{
+  ViewData["Title"] = "Create Software Expertise";
+  int staffId = (int)ViewData["StaffId"];
+}
+
+<h1>Create Software Expertise</h1>
+
+<h4>Software Expertise</h4>
+<hr />
+<div class="row">
+  <div class="col-md-4">
+    <form asp-action="Create">
+      <div class="form-group">
+        <label asp-for="SoftwareExpertiseId" class="control-label"></label>
+        <select asp-for="SoftwareExpertiseId" class="form-control" asp-items="ViewBag.SoftwareExpertiseId"></select>
+        <span asp-validation-for="SoftwareExpertiseId" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="ExpertiseLevel" class="control-label"></label>
+        <select asp-for="ExpertiseLevel" class="form-control">
+          <option value="">Select Expertise Level</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+          <option value="Expert">Expert</option>
+        </select>
+        <span asp-validation-for="ExpertiseLevel" class="text-danger"></span>
+      </div>
+      <input type="hidden" asp-for="StaffId" value="@ViewData["StaffId"]" />
+      <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<div>
+  <a asp-action="Index" controller="Expertise" asp-route-staffId="@staffId" class="btn btn-secondary">Back to Staff
+    Details</a>
+</div>
+
+@section Scripts {
+  @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+  }
+}

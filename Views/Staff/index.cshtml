@@ -1,0 +1,73 @@
+@model IEnumerable<StaffInformationApp.Models.Staff>
+
+@{
+  ViewData["Title"] = "Staff Index";
+}
+
+<h1>Staff Index</h1>
+
+<p>
+  <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.First().IndexNumber)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.First().FullNames)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.First().Email)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.First().CurrentLocation)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.First().HighestLevelOfEducation.Level)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.First().DutyStation.Location)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.First().AvailabilityForRemoteWork)
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.IndexNumber)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.FullNames)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.CurrentLocation)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.HighestLevelOfEducation.Level)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.DutyStation.Location)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.AvailabilityForRemoteWork)
+        </td>
+        <td>
+          <a asp-action="Index" asp-controller="Project" asp-route-staffId="@item.Id" class="btn btn-primary">Projects</a>
+          <a asp-action="Index" asp-controller="Expertise" asp-route-staffId="@item.Id"
+            class="btn btn-success">Expertise</a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
