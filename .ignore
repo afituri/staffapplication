@@ -1,1 +1,9 @@
-appsetting.json
+# Ignore appsettings.json and appsettings.Development.json
+appsettings.json
+appsettings.Development.json
+
+# You might also want to ignore other environment-specific appsettings files
+appsettings.*.json
+
+# Optional: Ignore any other sensitive files
+*.secret.json
